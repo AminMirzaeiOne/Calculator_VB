@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E7E41ACE-BB16-4409-8BC8-C54F92D08316}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>Calculator.Module1</StartupObject>
+    <StartupObject>Calculator.Program</StartupObject>
     <RootNamespace>Calculator</RootNamespace>
     <AssemblyName>Calculator</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -71,7 +71,7 @@
   <ItemGroup>
     <Compile Include="Actions.vb" />
     <Compile Include="CalcBoard.vb" />
-    <Compile Include="Module1.vb" />
+    <Compile Include="Program.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

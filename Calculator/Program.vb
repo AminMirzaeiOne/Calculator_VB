@@ -1,4 +1,4 @@
-﻿Module Module1
+﻿Module Program
     Private equal As Boolean = False
     Dim keyInfo As ConsoleKeyInfo
     Sub Main()
