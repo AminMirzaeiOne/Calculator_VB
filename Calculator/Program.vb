@@ -8,6 +8,7 @@
 
     Sub Main()
         Console.SetWindowSize(60, 18)
+        Calculator.CalcBoard.CalSize = CalculatorSize.Small
         Draw()
         GetKey()
         Console.ReadKey()

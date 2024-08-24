@@ -13,7 +13,7 @@
             size = value
             Select Case value
                 Case CalculatorSize.Small
-                    Calculator.ConsoleHelper.SetCurrentFont("Consolas", 10)
+                    Calculator.ConsoleHelper.SetCurrentFont("Consolas", 15)
                 Case CalculatorSize.Medium
                     Calculator.ConsoleHelper.SetCurrentFont("Consolas", 20)
                 Case CalculatorSize.Large
@@ -28,7 +28,7 @@
         Console.WriteLine("   ║═══════════════║")
         Console.WriteLine("   ║ 0             ║")
         Console.WriteLine("   ║═══════════════║")
-        Console.WriteLine("   ║  C    CE    < ║")
+        Console.WriteLine("   ║  C  CE  <  =  ║")
         Console.WriteLine("   ║═══╦═══╦═══╦═══║")
         Console.WriteLine("   ║ 7 ║ 8 ║ 9 ║ / ║")
         Console.WriteLine("   ╠═══╬═══╬═══╬═══╣")
