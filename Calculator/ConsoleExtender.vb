@@ -39,8 +39,6 @@ Public Module ConsoleHelper
     End Structure
 
     Public Function SetCurrentFont(font As String, Optional fontSize As Short = 0) As FontInfo()
-        Console.WriteLine("Set Current Font: " & font)
-
         Dim before As FontInfo = New FontInfo With {
         .cbSize = Marshal.SizeOf(Of FontInfo)()
     }

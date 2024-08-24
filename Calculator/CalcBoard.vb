@@ -19,7 +19,7 @@ Module CalcBoard
     End Sub
 
     Private Sub DrawSmall()
-        ConsoleHelper.SetCurrentFont("Consolas", 30)
+        ConsoleHelper.SetCurrentFont("Consolas", 40)
         Console.WriteLine("   ╔═══════════════╗")
         Console.WriteLine("   ║               ║")
         Console.WriteLine("   ║═══════════════║")
