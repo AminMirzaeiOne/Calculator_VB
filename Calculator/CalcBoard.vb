@@ -1,6 +1,5 @@
 ﻿Module CalcBoard
     Public Sub Draw()
-
         Console.WriteLine("   ╔═══════════════╗")
         Console.WriteLine("   ║               ║")
         Console.WriteLine("   ║═══════════════║")
