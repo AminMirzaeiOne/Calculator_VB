@@ -1,6 +1,11 @@
 ﻿Module Program
     Private equal As Boolean = False
     Dim keyInfo As ConsoleKeyInfo
+    Public equalNumber As Double = 0
+    Public OneNumber As Double = 0
+    Public TwoNumber As Double = 0
+    Public cursor As Byte = 5
+
     Sub Main()
         Console.SetWindowSize(60, 18)
         Draw()
@@ -9,29 +14,30 @@
     End Sub
 
     Sub GetKey()
-        Dim x As Byte = 5
         While equal = False
-            Console.SetCursorPosition(x, 3)
-            x = x + 1
+            Console.SetCursorPosition(cursor, 3)
+            cursor = cursor + 1
             keyInfo = Console.ReadKey()
-            Select Case keyInfo.Key
-                Case ConsoleKey.Delete
-                    Clear()
-                Case ConsoleKey.Backspace
-                    Console.SetCursorPosition(9, 13)
-                Case ConsoleKey.OemPlus
-                    Console.SetCursorPosition(9, 11)
-                Case ConsoleKey.OemMinus
-                    Console.SetCursorPosition(13, 11)
-                Case ConsoleKey.Multiply
-                    Console.SetCursorPosition(5, 9)
-                Case ConsoleKey.Divide
-                    Console.SetCursorPosition(9, 9)
-                Case ConsoleKey.Enter
+            If keyInfo.Key >= ConsoleKey.D0 AndAlso keyInfo.Key <= ConsoleKey.D9 Or keyInfo.Key = ConsoleKey.Backspace Or keyInfo.Key = ConsoleKey.Delete Then
+                Select Case keyInfo.Key
+                    Case ConsoleKey.Delete
+                        Clear()
+                    Case ConsoleKey.Backspace
+                        Backspace()
+                    Case ConsoleKey.OemPlus
+                        Console.SetCursorPosition(9, 11)
+                    Case ConsoleKey.OemMinus
+                        Console.SetCursorPosition(13, 11)
+                    Case ConsoleKey.Multiply
+                        Console.SetCursorPosition(5, 9)
+                    Case ConsoleKey.Divide
+                        Console.SetCursorPosition(9, 9)
+                    Case ConsoleKey.Enter
+                End Select
+            Else
+                Backspace()
+            End If
 
-                Case Else
-                    Exit While
-            End Select
         End While
     End Sub
 
