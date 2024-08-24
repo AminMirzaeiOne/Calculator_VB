@@ -4,63 +4,75 @@ Imports System.Linq
 Imports System.Text
 Imports System.Runtime.InteropServices
 Imports System.Drawing
-Namespace ConsoleExtender
+Public Module ConsoleHelper
 
-    <StructLayout(LayoutKind.Sequential, Pack:=1)>
-    Public Structure ConsoleFont
-        Public Index As UInteger
-        Public SizeX, SizeY As Short
+    Private Const FixedWidthTrueType As Integer = 54
+    Private Const StandardOutputHandle As Integer = -11
+
+    <DllImport("kernel32.dll", SetLastError:=True)>
+    Friend Function GetStdHandle(nStdHandle As Integer) As IntPtr
+    End Function
+
+
+    <DllImport("kernel32.dll", SetLastError:=True, CharSet:=CharSet.Unicode)>
+    Friend Function SetCurrentConsoleFontEx(hConsoleOutput As IntPtr, MaximumWindow As Boolean, ByRef ConsoleCurrentFontEx As FontInfo) As Boolean
+    End Function
+
+
+    <DllImport("kernel32.dll", SetLastError:=True, CharSet:=CharSet.Unicode)>
+    Friend Function GetCurrentConsoleFontEx(hConsoleOutput As IntPtr, MaximumWindow As Boolean, ByRef ConsoleCurrentFontEx As FontInfo) As Boolean
+    End Function
+
+
+    Private ReadOnly ConsoleOutputHandle As IntPtr = GetStdHandle(StandardOutputHandle)
+
+    <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Unicode)>
+    Public Structure FontInfo
+        Friend cbSize As Integer
+        Friend FontIndex As Integer
+        Friend FontWidth As Short
+        Public FontSize As Short
+        Public FontFamily As Integer
+        Public FontWeight As Integer
+        <MarshalAs(UnmanagedType.ByValTStr, SizeConst:=32)>
+        Public FontName As String
     End Structure
 
-    Public Module ConsoleHelper
-        <DllImport("kernel32")>
-        Public Function SetConsoleIcon(hIcon As IntPtr) As Boolean
-        End Function
+    Public Function SetCurrentFont(font As String, Optional fontSize As Short = 0) As FontInfo()
+        Console.WriteLine("Set Current Font: " & font)
 
-        Public Function SetConsoleIcon(icon As Icon) As Boolean
-            Return SetConsoleIcon(icon.Handle)
-        End Function
+        Dim before As FontInfo = New FontInfo With {
+        .cbSize = Marshal.SizeOf(Of FontInfo)()
+    }
 
-        <DllImport("kernel32")>
-        Private Function SetConsoleFont(hOutput As IntPtr, index As UInteger) As Boolean
-        End Function
+        If GetCurrentConsoleFontEx(ConsoleOutputHandle, False, before) Then
 
-        Private Enum StdHandle
-            OutputHandle = -11
-        End Enum
+            Dim [set] As FontInfo = New FontInfo With {
+        .cbSize = Marshal.SizeOf(Of FontInfo)(),
+        .FontIndex = 0,
+        .FontFamily = FixedWidthTrueType,
+        .FontName = font,
+        .FontWeight = 400,
+        .FontSize = If(fontSize > 0, fontSize, before.FontSize)
+    }
 
-        <DllImport("kernel32")>
-        Private Function GetStdHandle(index As StdHandle) As IntPtr
-        End Function
+            ' Get some settings from current font.
+            If Not SetCurrentConsoleFontEx(ConsoleOutputHandle, False, [set]) Then
+                Dim ex = Marshal.GetLastWin32Error()
+                Console.WriteLine("Set error " & ex.ToString())
+                Throw New ComponentModel.Win32Exception(ex)
+            End If
 
-        Public Function SetConsoleFont(index As UInteger) As Boolean
-            Return SetConsoleFont(GetStdHandle(StdHandle.OutputHandle), index)
-        End Function
+            Dim after As FontInfo = New FontInfo With {
+        .cbSize = Marshal.SizeOf(Of FontInfo)()
+    }
+            GetCurrentConsoleFontEx(ConsoleOutputHandle, False, after)
 
-        <DllImport("kernel32")>
-        Private Function GetConsoleFontInfo(hOutput As IntPtr,
-        <MarshalAs(UnmanagedType.Bool)> bMaximize As Boolean, count As UInteger,
-<MarshalAs(UnmanagedType.LPArray), Out> fonts As ConsoleFont()) As Boolean
-        End Function
-
-        <DllImport("kernel32")>
-        Private Function GetNumberOfConsoleFonts() As UInteger
-        End Function
-
-        Public ReadOnly Property ConsoleFontsCount As UInteger
-            Get
-                Return GetNumberOfConsoleFonts()
-            End Get
-        End Property
-
-        Public ReadOnly Property ConsoleFonts As ConsoleFont()
-            Get
-                Dim fonts As ConsoleFont() = New ConsoleFont(GetNumberOfConsoleFonts() - 1) {}
-                If fonts.Length > 0 Then GetConsoleFontInfo(GetStdHandle(StdHandle.OutputHandle), False, fonts.Length, fonts)
-                Return fonts
-            End Get
-        End Property
-    End Module
-
-
-End Namespace
+            Return {before, [set], after}
+        Else
+            Dim er = Marshal.GetLastWin32Error()
+            Console.WriteLine("Get error " & er.ToString())
+            Throw New ComponentModel.Win32Exception(er)
+        End If
+    End Function
+End Module
