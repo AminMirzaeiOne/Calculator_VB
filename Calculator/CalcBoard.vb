@@ -1,9 +1,10 @@
 ﻿Module CalcBoard
     Public Sub Draw()
+
         Console.WriteLine("   ╔═══════════════╗")
         Console.WriteLine("   ║               ║")
         Console.WriteLine("   ║═══════════════║")
-        Console.WriteLine("   ║             0 ║")
+        Console.WriteLine("   ║ 0             ║")
         Console.WriteLine("   ║═══════════════║")
         Console.WriteLine("   ║  C    CE    < ║")
         Console.WriteLine("   ║═══╦═══╦═══╦═══║")

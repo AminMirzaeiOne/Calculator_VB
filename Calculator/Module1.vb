@@ -1,70 +1,42 @@
 ﻿Module Module1
     Private equal As Boolean = False
-    Enum Keys
-        None
-        zero
-        one
-        two
-        three
-        four
-        five
-        six
-        seven
-        eight
-        nine
-        plus
-        mines
-        multiplication
-        division
-        Clear
-        ClearE
-        Backspace
-    End Enum
-    Dim Key As Calculator.Keys = Keys.None
+    Dim keyInfo As ConsoleKeyInfo
     Sub Main()
+        Console.SetWindowSize(60, 18)
         Draw()
         GetKey()
         Console.ReadKey()
     End Sub
 
     Sub GetKey()
+        Dim x As Byte = 5
         While equal = False
-            Dim keyInfo As ConsoleKeyInfo = Console.ReadKey()
+            Console.SetCursorPosition(x, 3)
+            x = x + 1
+            keyInfo = Console.ReadKey()
             Select Case keyInfo.Key
-                Case ConsoleKey.D0
+                Case ConsoleKey.Delete
+                    Clear()
+                Case ConsoleKey.Backspace
                     Console.SetCursorPosition(9, 13)
-                    Key = Keys.zero
-                Case ConsoleKey.D1
-                    Console.SetCursorPosition(5, 11)
-                    Key = Keys.one
-                Case ConsoleKey.D2
+                Case ConsoleKey.OemPlus
                     Console.SetCursorPosition(9, 11)
-                    Key = Keys.two
-                Case ConsoleKey.D3
+                Case ConsoleKey.OemMinus
                     Console.SetCursorPosition(13, 11)
-                    Key = Keys.three
-                Case ConsoleKey.D4
+                Case ConsoleKey.Multiply
                     Console.SetCursorPosition(5, 9)
-                    Key = Keys.four
-                Case ConsoleKey.D5
+                Case ConsoleKey.Divide
                     Console.SetCursorPosition(9, 9)
-                    Key = Keys.five
-                Case ConsoleKey.D6
-                    Console.SetCursorPosition(13, 9)
-                    Key = Keys.six
-                Case ConsoleKey.D7
-                    Console.SetCursorPosition(5, 7)
-                    Key = Keys.seven
-                Case ConsoleKey.D8
-                    Console.SetCursorPosition(9, 7)
-                    Key = Keys.eight
-                Case ConsoleKey.D9
-                    Console.SetCursorPosition(13, 7)
-                    Key = Keys.nine
+                Case ConsoleKey.Enter
+
                 Case Else
                     Exit While
             End Select
         End While
     End Sub
+
+
+
+
 
 End Module
