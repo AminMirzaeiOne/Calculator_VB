@@ -35,7 +35,7 @@
                     Case ConsoleKey.Enter
                 End Select
             Else
-                Backspace()
+                Clear()
             End If
 
         End While

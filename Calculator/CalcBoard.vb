@@ -1,25 +1,28 @@
-﻿Imports Calculator.ConsoleExtender
-
-Module CalcBoard
+﻿Module CalcBoard
     Enum CalculatorSize
         Small
         Medium
         Large
     End Enum
-    Public Property Size As Calculator.CalcBoard.CalculatorSize = CalculatorSize.Small
-    Public Sub Draw()
-        Select Case Size
-            Case CalculatorSize.Small
-                DrawSmall()
-            Case CalculatorSize.Medium
-                DrawMedium()
-            Case CalculatorSize.Large
-                DrawLarge()
-        End Select
-    End Sub
+    Private size As Calculator.CalcBoard.CalculatorSize = CalculatorSize.Small
+    Public Property CalSize As Calculator.CalcBoard.CalculatorSize
+        Get
+            Return size
+        End Get
+        Set(value As Calculator.CalcBoard.CalculatorSize)
+            size = value
+            Select Case value
+                Case CalculatorSize.Small
+                    Calculator.ConsoleHelper.SetCurrentFont("Consolas", 10)
+                Case CalculatorSize.Medium
+                    Calculator.ConsoleHelper.SetCurrentFont("Consolas", 20)
+                Case CalculatorSize.Large
+                    Calculator.ConsoleHelper.SetCurrentFont("Consolas", 30)
+            End Select
+        End Set
+    End Property
 
-    Private Sub DrawSmall()
-        ConsoleHelper.SetCurrentFont("Consolas", 40)
+    Public Sub Draw()
         Console.WriteLine("   ╔═══════════════╗")
         Console.WriteLine("   ║               ║")
         Console.WriteLine("   ║═══════════════║")
@@ -38,11 +41,6 @@ Module CalcBoard
         Console.WriteLine()
     End Sub
 
-    Private Sub DrawMedium()
 
-    End Sub
 
-    Private Sub DrawLarge()
-
-    End Sub
 End Module
