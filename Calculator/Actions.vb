@@ -3,10 +3,13 @@
         Calculator.Program.OneNumber = 0
         Calculator.Program.TwoNumber = 0
         Calculator.Program.equalNumber = 0
-        For index = 5 To 15
-            Console.SetCursorPosition(index, 3)
+        For index = 5 To cursor
+            Calculator.Program.cursor -= 1
+            Console.SetCursorPosition(cursor, 3)
             Console.Write(" ")
         Next
+        Console.SetCursorPosition(5, 3)
+        Console.Write("0")
 
     End Sub
 
