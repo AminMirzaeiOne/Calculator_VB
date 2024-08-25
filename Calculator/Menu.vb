@@ -14,7 +14,7 @@
         Console.WriteLine("   ╔═══════════════╗")
         Console.WriteLine("   ║               ║")
         Console.WriteLine("   ╠               ╣")
-        Console.WriteLine("   ║   [Options]   ║ Calculator settings and options ")
+        Console.WriteLine("   ║   [Settings]  ║ Calculator settings and options ")
         Console.WriteLine("   ╠               ╣")
         Console.WriteLine("   ║               ║")
         Console.WriteLine("   ╚═══╩═══╩═══╩═══╝")
@@ -44,7 +44,7 @@
 
     Public Sub GetMenuSelected()
 startGet:
-        Dim key As ConsoleKeyInfo
+        Dim key As System.ConsoleKeyInfo
         key = Console.ReadKey()
         If key.Key = ConsoleKey.Tab Then
             If tabIndex < 4 Then
@@ -59,18 +59,23 @@ startGet:
     End Sub
 
     Public Sub CheckMenuSelectd()
+        System.Console.SetCursorPosition(90, 4)
+        Clear(4, 90)
         Select Case tabIndex
             Case 0
-                System.Console.WriteLine("Cal Selected")
+                System.Console.ForegroundColor = ConsoleColor.DarkCyan
+                System.Console.Write("Calculator Selected")
             Case 1
-                System.Console.WriteLine("Opt Selected")
+                System.Console.ForegroundColor = ConsoleColor.Yellow
+                System.Console.Write("Settings Selected")
             Case 2
-                System.Console.WriteLine("Appe Selected")
+                System.Console.ForegroundColor = ConsoleColor.Magenta
+                System.Console.Write("Appearance Selected")
             Case 3
-                System.Console.WriteLine("Info Selected")
-            Case Else
-
+                System.Console.ForegroundColor = ConsoleColor.Red
+                System.Console.Write("Information Selected")
         End Select
+        System.Console.ResetColor()
     End Sub
 
 End Module

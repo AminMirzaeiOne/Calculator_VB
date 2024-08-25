@@ -13,6 +13,17 @@
 
     End Sub
 
+    Public Sub Clear(Top As Integer, Left As Integer)
+        Dim x As Integer = 20
+        Console.SetCursorPosition(Left, Top)
+        For index = Left To 20
+            x -= 1
+            Console.SetCursorPosition(Left, Top)
+            Console.Write(" ")
+        Next
+
+    End Sub
+
     Public Sub Backspace()
         If Calculator.Program.cursor > 5 Then
             Calculator.Program.cursor -= 2
