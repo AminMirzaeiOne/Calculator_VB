@@ -8,10 +8,6 @@
 
     Sub Main()
         DrawMenu()
-        'Console.SetWindowSize(60, 18)
-        'Calculator.CalcBoard.CalSize = CalculatorSize.Medium
-        'Draw()
-        'GetKey()
         Console.ReadKey()
     End Sub
 

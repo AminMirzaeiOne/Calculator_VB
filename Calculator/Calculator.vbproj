@@ -73,6 +73,7 @@
     <Compile Include="Actions.vb" />
     <Compile Include="CalcBoard.vb" />
     <Compile Include="ConsoleExtender.vb" />
+    <Compile Include="Inforamtion.vb" />
     <Compile Include="Menu.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -92,6 +93,7 @@
     </Compile>
     <Compile Include="Operations.vb" />
     <Compile Include="ReadCharacterAt.vb" />
+    <Compile Include="Settings.vb" />
     <Compile Include="Themes.vb" />
   </ItemGroup>
   <ItemGroup>

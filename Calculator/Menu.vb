@@ -52,9 +52,25 @@ startGet:
             Else
                 tabIndex = 0
             End If
+            CheckMenuSelectd()
+            GoTo startGet
+        ElseIf key.Key = ConsoleKey.Enter Then
+            Select Case tabIndex
+                Case 0
+                    System.Console.Clear()
+                    Console.SetWindowSize(60, 18)
+                    Calculator.CalcBoard.CalSize = CalculatorSize.Medium
+                    Draw()
+                    GetKey()
+                Case 1
+                    System.Console.WriteLine("1")
+                Case 2
+                    System.Console.WriteLine("2")
+                Case 3
+                    DrawInfo()
+
+            End Select
         End If
-        CheckMenuSelectd()
-        GoTo startGet
 
     End Sub
 
@@ -77,5 +93,7 @@ startGet:
         End Select
         System.Console.ResetColor()
     End Sub
+
+
 
 End Module
