@@ -21,6 +21,7 @@ Module ReadCharacterAt
 
     Public Function ReadCharacterAt(x As Integer, y As Integer) As Char
         x -= 1
+        y -= 1
         Dim consoleHandle As IntPtr = GetStdHandle(-11)
         If consoleHandle = IntPtr.Zero Then
             Return ChrW(0)
