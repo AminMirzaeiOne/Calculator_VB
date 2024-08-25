@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions.vb" />
+    <Compile Include="ASCIIArt.Module.vb" />
     <Compile Include="CalcBoard.vb" />
     <Compile Include="ConsoleExtender.vb" />
     <Compile Include="Inforamtion.vb" />
