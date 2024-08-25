@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Text
 
-Module ReadCharacterAt
+Module ReadCharacter
     <DllImport("kernel32.dll", SetLastError:=True)>
     Private Function GetStdHandle(nStdHandle As Integer) As IntPtr
     End Function
@@ -19,16 +19,15 @@ Module ReadCharacterAt
         Public Y As Short
     End Structure
 
-    Public Function ReadCharacterAt(x As Integer, y As Integer) As Char
-        x -= 1
-        y -= 1
+    Public Function ReadCharacterAt(left As Integer, top As Integer) As Char
+        left -= 1
         Dim consoleHandle As IntPtr = GetStdHandle(-11)
         If consoleHandle = IntPtr.Zero Then
             Return ChrW(0)
         End If
         Dim position As COORD = New COORD With {
-        .X = x,
-        .Y = y
+        .X = left,
+        .Y = top
     }
         Dim result As StringBuilder = New StringBuilder(1)
         Dim read As UInteger = 0

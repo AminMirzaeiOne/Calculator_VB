@@ -73,6 +73,7 @@
     <Compile Include="Actions.vb" />
     <Compile Include="CalcBoard.vb" />
     <Compile Include="ConsoleExtender.vb" />
+    <Compile Include="Menu.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
