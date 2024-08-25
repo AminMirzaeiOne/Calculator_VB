@@ -7,10 +7,13 @@
     Public cursor As Byte = 5
 
     Sub Main()
-        Console.SetWindowSize(60, 18)
-        Calculator.CalcBoard.CalSize = CalculatorSize.Medium
-        Draw()
-        GetKey()
+        Console.WriteLine("Microsoft android ios windows phone")
+        Dim x As Char = Calculator.ReadCharacterAt.ReadCharacterAt(3, 0)
+        Console.WriteLine(x.ToString())
+        'Console.SetWindowSize(60, 18)
+        'Calculator.CalcBoard.CalSize = CalculatorSize.Medium
+        'Draw()
+        'GetKey()
         Console.ReadKey()
     End Sub
 

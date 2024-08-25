@@ -10,9 +10,6 @@ Module Operations
     End Enum
 
 
-    <DllImport("kernel32.dll", CharSet:=CharSet.Unicode, SetLastError:=True)>
-    Private Function GetConsoleScreenBufferInfo(consoleHandle As IntPtr, <Out> ByRef consoleScreenBufferInfo As CONSOLE_SCREEN_) As Boolean
-    End Function
 
     Public Property Status As Calculator.Operations.OperationStatus = OperationStatus.None
     Public Sub Plus()
@@ -23,9 +20,9 @@ Module Operations
         For index = 5 To 12
             cursor += 1
             System.Console.SetCursorPosition(cursor, 3)
-            oneNumber = Console.inpu
+            'oneNumber = Console.inpu
         Next
-        Calculator.Program.OneNumber = 
+        'Calculator.Program.OneNumber = 
     End Sub
 
     Public Sub Minus()
