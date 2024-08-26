@@ -9,11 +9,11 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("Calculator")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyDescription("Calculator program under console with Visual Basic .NET programming language")>
+<Assembly: AssemblyCompany("AminMirzaeiOne")>
 <Assembly: AssemblyProduct("Calculator")>
-<Assembly: AssemblyCopyright("Copyright ©  2024")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyCopyright("Copyright ©  2016")>
+<Assembly: AssemblyTrademark("AminMirzaeiOne")>
 
 <Assembly: ComVisible(False)>
 
