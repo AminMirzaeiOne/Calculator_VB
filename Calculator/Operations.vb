@@ -9,6 +9,7 @@ Module Operations
         Multiply
     End Enum
 
+    Dim characters As String = ""
 
 
     Public Property Status As Calculator.Operations.OperationStatus = OperationStatus.None
@@ -20,9 +21,10 @@ Module Operations
         For index = 5 To 12
             cursor += 1
             System.Console.SetCursorPosition(cursor, 3)
-            'oneNumber = Console.inpu
+            characters = characters & Calculator.ReadCharacter.ReadCharacterAt(cursor, 3).ToString()
+            Clear()
         Next
-        'Calculator.Program.OneNumber = 
+        System.Console.WriteLine(characters.ToString())
     End Sub
 
     Public Sub Minus()

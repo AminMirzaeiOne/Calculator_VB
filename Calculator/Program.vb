@@ -16,20 +16,20 @@
             Console.SetCursorPosition(cursor, 3)
             cursor = cursor + 1
             keyInfo = Console.ReadKey()
-            If keyInfo.Key >= ConsoleKey.D0 AndAlso keyInfo.Key <= ConsoleKey.D9 Or keyInfo.Key = ConsoleKey.Backspace Or keyInfo.Key = ConsoleKey.Delete Then
+            If keyInfo.Key >= ConsoleKey.D0 AndAlso keyInfo.Key <= ConsoleKey.D9 Or keyInfo.Key = ConsoleKey.Backspace Or keyInfo.Key = ConsoleKey.Delete Or keyInfo.Key = ConsoleKey.A Then
                 Select Case keyInfo.Key
                     Case ConsoleKey.Delete
                         Clear()
                     Case ConsoleKey.Backspace
                         Backspace()
-                    Case ConsoleKey.OemPlus
-                        Console.SetCursorPosition(9, 11)
+                    Case ConsoleKey.A
+                        Operations.Plus()
                     Case ConsoleKey.OemMinus
-                        Console.SetCursorPosition(13, 11)
+
                     Case ConsoleKey.Multiply
-                        Console.SetCursorPosition(5, 9)
+
                     Case ConsoleKey.Divide
-                        Console.SetCursorPosition(9, 9)
+
                     Case ConsoleKey.Enter
                 End Select
             Else
